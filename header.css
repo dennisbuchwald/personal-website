@@ -1,0 +1,112 @@
+/*bestimmt abstand zwischen den spalten*/
+header {
+  padding: 100px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  /* -> wichtig füer responiv Websiten */
+}
+
+.header_text {
+  width: 850px;
+}
+
+/* "overflow: hidden" bestimmt dass das Bild Abgeschnitten wird*/
+.circle {
+  height: 350px;
+  width: 350px;
+
+  max-width: 80vw;
+  max-height: 80vw;
+  /* -> 80% der Display breite */
+
+  overflow: hidden;
+  border-radius: 50%;
+  border: 20px solid var(--main-brand-color);
+  /* Flex Box zum positionieren des Inhalts*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* sklaieren des Bildes im Bezug auf den Kreis*/
+.circle img {
+  width: 150%;
+}
+
+nav {
+  margin-bottom: 120px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+/* Durch folgendes CSS bekomme ich einen Animierten strich unter die Navigationsbar*/
+nav a {
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  position: relative;
+  pad: 3px;
+}
+
+nav a:hover {
+  color: var(--text-color);
+}
+
+nav a::after {
+  content: "";
+  height: 2px;
+  width: 0%;
+  background-color: var(--main-brand-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: 150ms ease-in-out;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Blendet Button Standart mäßig aus */
+#toogle_button {
+  display: none;
+}
+
+label[for="toogle_button"] {
+  display: none;
+}
+
+label[for="toogle_button"] span {
+  font-size: 40px;
+}
+
+/* Bei kleinen Display Button einblenden */
+@media (max-width: 800px) {
+  /* O.L. Positionieren mit hintergrundfarbe */
+  nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--secundary-color);
+    padding: 15px;
+    border-radius: 0 0 25px 0;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    /* sollen untereinader angezeigt werden */
+  }
+  #toogle_button:checked ~ ul {
+    display: flex;
+  }
+  label[for="toogle_button"] {
+    display: block;
+  }
+}
